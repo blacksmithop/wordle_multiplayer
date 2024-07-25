@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Wordle - Home</title>
+    <link rel="stylesheet" href="./assets/css/home-styles.css">
+</head>
+<body>
+    <header>
+        <h1>Wordle</h1>
+    </header>
+    <div class="container">
+        <div id="nickname-container" class="centered-content">
+            <input type="text" id="nickname-input" placeholder="Enter your nickname">
+            <button id="create-room-button" onclick="showRoomOptions()">Create Room</button>
+        </div>
+        <div id="room-options-container" class="centered-content hidden">
+            <div class="slider-container">
+                <label for="num-players">Number of Players: <span id="num-players-value">5</span></label>
+                <input type="range" id="num-players" min="1" max="20" value="5" oninput="updateValue('num-players')">
+            </div>
+            <div class="slider-container">
+                <label for="num-letters">Number of Letters: <span id="num-letters-value">5</span></label>
+                <input type="range" id="num-letters" min="1" max="10" value="5" oninput="updateValue('num-letters')">
+            </div>
+            <div class="slider-container">
+                <label for="num-rounds">Number of Rounds: <span id="num-rounds-value">3</span></label>
+                <input type="range" id="num-rounds" min="1" max="10" value="3" oninput="updateValue('num-rounds')">
+            </div>
+            <button id="start-game-button" onclick="createRoom()">Create Room</button>
+        </div>
+        <div id="room-info-container" class="centered-content hidden">
+            <div class="room-code-container">
+                <p>Room Code: <span id="room-code"></span> <button onclick="copyRoomCode()">Copy</button></p>
+            </div>
+            <div id="players-list">
+                <h2>Players Joined:</h2>
+                <ul id="players">
+                    <!-- Player list items will be added here dynamically -->
+                </ul>
+            </div>
+            <button id="start-game" onclick="startGame()">Start Game</button>
+        </div>
+        <div id="game-container" class="hidden">
+            <div id="round-info" class="round-info">
+                Round: <span id="current-round">1</span> / <span id="total-rounds"></span>
+            </div>
+            <div id="game-board-container">
+                <button id="hint-button" class="hint-button" onclick="showHint()">💡</button>
+                <div id="game-board"></div>
+            </div>
+            <div id="keyboard"></div>
+            <button id="submit-button" onclick="submitGuess()">Submit</button>
+        </div>
+        <div id="leaderboard-container" class="centered-content hidden">
+            <h2>Final Leaderboard</h2>
+            <ul id="leaderboard">
+                <!-- Leaderboard items will be added here dynamically -->
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p>© Abhinav</p>
+    </footer>
+    <div id="toast-container"></div>
+    <script src="./assets/js/home-script.js"></script>
+</body>
+</html>
